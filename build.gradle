@@ -1,0 +1,50 @@
+buildscript {
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctorj-diagram:1.3.1'
+    }
+}
+
+plugins {
+  id 'org.asciidoctor.convert' version '1.5.3'
+  id "com.bertramlabs.asset-pipeline" version "2.14.5"
+}
+
+asciidoctor {
+    backends 'html5'
+    attributes 'source-highlighter': 'prettify',
+               toc                 : 'left',
+               icons               : 'font',
+               toclevels           : 3,
+               'pdf-style'         : 'default'
+
+    requires = ['asciidoctor-diagram']
+}
+
+assets {
+  minifyJs = true
+  minifyCss = true
+  enableSourceMaps = true
+  maxThreads = 4 //useful for concurrent asset processing during build
+  configOptions = [:] //useful for custom config on extension libraries
+
+  minifyOptions = [
+    optimizationLevel: 'SIMPLE',
+    angularPass: true // Can use @ngInject annotation for Angular Apps
+  ]
+
+  includes = []
+  excludes = ['**/*.less'] //Example Exclude GLOB pattern
+
+  //for plugin packaging
+  packagePlugin=false //set to true if this is a library
+
+  //developmentRuntime can be turned off
+  developmentRuntime=true
+
+  //if you want to customize the jar task this task runs on you can specify a jarTaskName
+  // jarTaskName=null
+
+  // Can add custom asset locations (directories or individual jar files)
+  // from '/vendor/lib'
+  // from '/path/to/file.jar'
+}

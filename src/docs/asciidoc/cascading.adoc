@@ -1,0 +1,41 @@
+== Cascading
+
+=== Stylesheet origin
+
+Where the stylesheet comes from. The priority is:
+
+[ditaa]
+....
+ +-------------------+ greater +--------------------+
+ |        (1)        +-------->|         (2)        |
+ | Author stylesheet |         |  Agent stylesheets |
+ +---------+---------+         +--------------------+
+....
+
+=== Selector Specificity
+
+Denotes which selectors take precedence over which. There is a
+priority hierarchy:
+
+[ditaa]
+....
+ +---------+ greater +-----------+ greater +---------+
+ |   (1)   +-------->|    (2)    +-------->|   (3)   |
+ |   IDs   |         |  Classes  |         |   Tags  |
+ +---------+         +-----------+         +---------+
+....
+
+NOTE: Pseudo-class selectors such as `:hover` or attribute selectors
+such as `type="input"` have the same specificity as a class selector
+
+NOTE: `*` and combinators `>`, `+`, `~` have no effect on specificity
+
+=== Source order
+
+Is the order in which styles are declared in the stylesheet. Given the
+same specificity the later styles override earlier styles.
+
+=== Sum up
+
+- Don't use IDs in your selector
+- Don't use `!important`

@@ -1,0 +1,85 @@
+== Inheritance
+
+If an element has no cascaded value for a given property y could
+inherit one from an ancestor element. It's very common to apply some
+ruleset to the `<body>` element to avoid repeating such rule down the
+DOM.
+
+=== Elements
+
+Here is a list of elements that propagate their style to their
+children.
+
+[%header, cols=2*]
+|===
+|Element
+|Properties
+
+|<body>|color, font, font-family, font-size, font-weight,
+ font-variant, font-style, line-height, letter-spacing, text-align,
+ text-indent, text-transform, white-space, word-spacing
+|<ul>|list-style, list-style-type, list-style-position,
+ list-style-image
+|<table>|border properties, border-collapse, border-spacing
+|===
+
+In the following snippet the element `p` will inherit the
+`font-family` ruleset declared for the `body` element.
+
+[source, css]
+.children tags inherit from body
+----
+include::{src}/assets/stylesheets/inheritance/style_1.css[]
+----
+
+=== `inherit` word
+
+If you'd like to override the style of a given tag you can use the
+word `inherit` to apply the element's parent style. In the following
+example the link from the footer inherits the footer color, instead
+the general selector for links.
+
+[source, css]
+.children tags inherit from body
+----
+include::{src}/assets/stylesheets/inheritance/style_2.css[]
+----
+
+=== `initial` value
+
+It resets the applied style to the default values.
+
+IMPORTANT: `auto` is not the same as `initial`.
+
+=== Shorthand properties
+
+Are properties that let you set the values of several other properties
+in just one line.
+
+IMPORTANT: Sometimes a shorthand declaration can imply more properties
+that the author has declared explicitly.
+
+The most common case is when declaring `font` or when declaring **top,
+right, bottom, left** properties. If the declaration ends before one
+of the four sides is given a value, that side takes its value from the
+opposite side.  Specify three values and the left and the right side
+will both use the second one. Specify two values and the top and
+bottom will use the first one. If you specify one, the rest will use
+that value.
+
+[source, css]
+.Shorthand properties (top, right, bottom, left)
+----
+include::{src}/assets/stylesheets/inheritance/style_3.css[]
+----
+
+IMPORTANT: Horizontal, vertical values for properties like
+`background-position`, `box-shadow` and `text-shadow` don't follow the
+`Trouble` (top, right, bottom, left) acronym. The should be treated
+like a cartesian grid, they represent an `x` and `y` values.
+
+[source, css]
+.Don't follow `Trouble` acronym
+----
+include::{src}/assets/stylesheets/inheritance/style_4.css[]
+----

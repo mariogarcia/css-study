@@ -1,0 +1,13 @@
+= CSS study
+:revnumber: {project-version}
+:numbered:
+:imagesDir: images/
+:imagesoutdir: images/
+:baseDir: .
+:stem:
+
+:src: {baseDir}/../../../src
+
+include::cascading.adoc[]
+
+include::inheritance.adoc[]
